@@ -1,0 +1,39 @@
+spring:
+
+  application:
+    name: Lectrium
+
+  datasource:
+    url: jdbc:postgresql://localhost:5455/test
+    username: test
+    password: test
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 10
+
+  jpa:
+    database: postgresql
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
+    #      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+
+  sql:
+    init:
+      mode: always  # ????????? schema.sql ??? ?????? ??????
+
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.xml
+    enabled: false # ??????? true, ???? ??????????? Liquibase
+
+server:
+  port: 8080
+
+#logging:
+#  level:
+#    org.springframework: INFO
+#    org.hibernate.SQL: DEBUG
+#    org.hibernate.type.descriptor.sql.BasicBinder: TRACE # ?????????? ????????? ? ????????
