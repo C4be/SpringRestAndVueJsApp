@@ -4,25 +4,15 @@ import vue from '@vitejs/plugin-vue'
 import vueDevTools from 'vite-plugin-vue-devtools'
 
 export default defineConfig({
-  plugins: [
-    vue(),
-    vueDevTools(),
-  ],
-  resolve: {
-    alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
-    },
-  },
+  plugins: [vue()],
   server: {
-    port: 8080, // Убедитесь, что порт фронтенда правильный
-    open: true,
+    port: 8081,
     proxy: {
       '/api': {
         target: 'http://localhost:8080', // Ваш бэкенд сервер
-        changeOrigin: true,  // Для корректной работы с CORS
-        secure: false,  // Если не используете HTTPS
-        rewrite: (path) => path.replace(/^\/api/, ''),  // Убираем /api при проксировании
+        changeOrigin: true, // Для корректной работы с CORS
+        secure: false, // Если не используете HTTPS
       },
     },
-  }
-})
+  },
+});
