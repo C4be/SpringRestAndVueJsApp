@@ -31,7 +31,7 @@ export default {
         // Функция для получения данных ячейки по title
         const fetchCell = async () => {
             try {
-                const response = await fetch(`/api/cell/${props.title}`, {
+                const response = await fetch(`http://localhost:8080/api/cell/${props.title}`, {
                     method: 'GET',
                 });
                 if (response.ok) {
