@@ -34,10 +34,10 @@ public class Cell {
     private CellType cellType;
 
     public enum CellType {
-        PYTHON_CEIL,
-        JAVA_CEIL,
-        MARKDOWN_CEIL,
-        ROW_TEXT_CEIL
+        PYTHON_CELL,
+        JAVA_CELL,
+        MARKDOWN_CELL,
+        ROW_TEXT_CELL
     }
 
 }

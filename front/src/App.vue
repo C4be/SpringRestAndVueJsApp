@@ -28,7 +28,7 @@ export default {
             <strong>Current route path:</strong> {{ $route.fullPath }}
         </p>
 
-        <main class="d-flex justify-content-center align-items-center">
+        <main class="d-flex flex-column justify-content-center align-items-center">
             <RouterView />
         </main>
         
