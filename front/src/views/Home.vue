@@ -1,17 +1,26 @@
 <template>
-    <h1>Hello body!</h1><br/>
-    <CellViewer title="home1"/><br/>
-    <CellViewer title="home"/>
+    <h1>Hello, body!</h1><br/>
+    
+    <div v-html="renderedMarkdown"></div>
+
 </template>
 
 <script>
-import CellViewer from '../components/Cells/CellViewer.vue';
-import CellComponent from '../components/CellComponent.vue';
+import { marked } from 'marked';
 
 export default {
-    components: {
-        CellViewer
+    props: { content: String },
+    setup() {
+        const renderedMarkdown = marked.parse(
+            "# Hello, this is my new project!\n" + 
+            "#### my name Dima!\n" +
+            "- one\n" +
+            "- two\n" +
+            "- three\n" +
+            "- four\n" +
+            "- five\n"
+        );
+        return { renderedMarkdown };
     }
-}
-
+};
 </script>

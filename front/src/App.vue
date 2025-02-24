@@ -32,6 +32,11 @@ export default {
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
+                            <RouterLink class="nav-link" to="/cells">
+                                <i class="bi bi-house-door"></i> Cells
+                            </RouterLink>
+                        </li>
+                        <li class="nav-item">
                             <RouterLink class="nav-link" to="/cell/home">
                                 <i class="bi bi-house-door"></i> Examplehome
                             </RouterLink>

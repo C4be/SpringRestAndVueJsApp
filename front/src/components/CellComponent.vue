@@ -15,8 +15,8 @@
                         </div>
                     </template>
                     <template v-else>
-                        <pre v-if="cell.cellType === 'PYTHON_CEIL' || cell.cellType === 'JAVA_CEIL'"><code :class="codeClass" v-html="highlightedContent"></code></pre>
-                        <div v-else-if="cell.cellType === 'MARKDOWN_CEIL'" v-html="markdownContent"></div>
+                        <pre v-if="cell.cellType === 'PYTHON_CELL' || cell.cellType === 'JAVA_CELL'"><code :class="codeClass" v-html="highlightedContent"></code></pre>
+                        <div v-else-if="cell.cellType === 'MARKDOWN_CELL'" v-html="markdownContent"></div>
                         <p v-else>{{ cell.content }}</p>
                     </template>
                 </div>
@@ -95,8 +95,8 @@ export default {
         };
 
         const codeClass = computed(() => {
-            if (cell.value?.cellType === 'PYTHON_CEIL') return 'language-python';
-            if (cell.value?.cellType === 'JAVA_CEIL') return 'language-java';
+            if (cell.value?.cellType === 'PYTHON_CELL') return 'language-python';
+            if (cell.value?.cellType === 'JAVA_CELL') return 'language-java';
             return '';
         });
 
@@ -106,7 +106,7 @@ export default {
         });
 
         const markdownContent = computed(() => {
-            return cell.value?.cellType === 'MARKDOWN_CEIL' ? marked(cell.value.content) : '';
+            return cell.value?.cellType === 'MARKDOWN_CELL' ? marked(cell.value.content) : '';
         });
 
         return { cell, codeClass, highlightedContent, markdownContent, isEditing, editableContent, toggleEdit, cancelEdit, saveChanges };
