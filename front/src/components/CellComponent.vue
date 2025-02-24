@@ -1,20 +1,34 @@
 <template>
-    <div v-if="cell">
-        <!-- Заголовок ячейки -->
-        <h1>{{ cell.title }} ({{ cell.cellType }})</h1>
 
-        <!-- Содержание ячейки -->
-        <div>
-            {{ cell.content }}
+    <div class="card" style="width: 30rem;">
+
+        <div v-if="cell">
+            <div class="card-body">
+                <h1 class="card-title">{{ cell.title }} ({{ cell.cellType }})</h1>
+            </div>
+
+            <div class="card-text">
+                {{ cell.content }}
+            </div>
         </div>
+        <div v-else>
+            <div class="card">
+                <div class="card-body">
+                    <!-- <h1 class="card-title">{{ cell.title }}</h1> -->
+                    <div class="card-text">
+                        <p>Загрузка...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
-    <div v-else>
-        <p>Загрузка...</p>
-    </div>
+
+
 </template>
 
 <script>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, watch } from 'vue';
 
 export default {
     props: {
@@ -48,6 +62,10 @@ export default {
             fetchCell();
         });
 
+        watch(() => props.title, () => {
+            fetchCell();
+        });
+
         // Возвращаем состояние, чтобы оно было доступно в шаблоне
         return {
             cell
@@ -55,17 +73,3 @@ export default {
     }
 };
 </script>
-
-<style scoped>
-/* Стили для компонента отображения ячейки */
-h1 {
-    color: #333;
-    font-size: 1.5em;
-}
-
-div {
-    margin-top: 10px;
-    font-size: 1.1em;
-    color: #555;
-}
-</style>

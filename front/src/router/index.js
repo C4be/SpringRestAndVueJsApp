@@ -1,21 +1,21 @@
-import { createRouter, createMemoryHistory } from 'vue-router';
+import { createRouter, createWebHistory } from 'vue-router';
 import CellComponent from '../components/CellComponent.vue'; // Импорт компонента CellDetail
+import Home from '../views/Home.vue';
 
 const routes = [
   {
-    path: '/cell/:title',
-    component: CellComponent,
-    props: true // Это позволит передавать параметр title как пропс в компонент
+    path: '/',
+    component: Home,
   },
   {
-    path: '/cell/ExampleTitle',
+    path: '/cell/:title',
     component: CellComponent,
     props: true // Это позволит передавать параметр title как пропс в компонент
   },
 ];
 
 const router = createRouter({
-  history: createMemoryHistory(),
+  history: createWebHistory(),
   routes
 });
 

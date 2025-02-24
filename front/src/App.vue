@@ -1,6 +1,12 @@
 <script>
+import { RouterLink, RouterView } from 'vue-router';
+
 export default {
     name: 'App',
+    components: {
+        RouterLink,
+        RouterView
+    },
 };
 </script>
 
@@ -11,8 +17,9 @@ export default {
         <nav>
             <ul>
                 <li>
-                    <RouterLink to="/cell/ExampleTitle">Перейти к ExampleTitle</RouterLink>
-                    <RouterLink to="/cell/home">Перейти к ExampleTitle</RouterLink>
+                    <RouterLink to="/">Перейти к home</RouterLink><br/>
+                    <RouterLink to="/cell/home">Перейти к Examplehome</RouterLink><br/>
+                    <RouterLink to="/cell/home1">Перейти к Examplehome1</RouterLink>
                 </li>
             </ul>
         </nav>
@@ -21,7 +28,7 @@ export default {
             <strong>Current route path:</strong> {{ $route.fullPath }}
         </p>
 
-        <main>
+        <main class="d-flex justify-content-center align-items-center">
             <RouterView />
         </main>
         
