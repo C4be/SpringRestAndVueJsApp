@@ -10,7 +10,7 @@ import 'highlight.js/styles/github-dark.css';
 export default {
     props: { content: String, language: String },
     setup(props) {
-        const codeClass = computed(() => `language-${props.language.toLowerCase().replace('_ceil', '')}`);
+        const codeClass = computed(() => `language-${props.language.toLowerCase().replace('_cell', '')}`);
         const highlightedCode = computed(() => {
             return hljs.highlight(props.content.trim(), { language: codeClass.value.replace('language-', '') }).value;
         });
