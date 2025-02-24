@@ -18,7 +18,6 @@ import { ref, onMounted } from 'vue';
 
 export default {
     props: {
-        // Принятие данных о ячейке через пропс
         title: {
             type: String,
             required: true
@@ -43,7 +42,6 @@ export default {
                 console.error('Ошибка при получении ячейки:', error);
             }
         };
-
 
         // Загружаем данные о ячейке при монтировании компонента
         onMounted(() => {
