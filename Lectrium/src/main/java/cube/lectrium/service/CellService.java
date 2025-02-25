@@ -1,8 +1,8 @@
 package cube.lectrium.service;
 
 import cube.lectrium.model.Cell;
-import cube.lectrium.model.dto.CellDTO;
-import cube.lectrium.model.mapper.CellMapper;
+import cube.lectrium.dto.CellDTO;
+import cube.lectrium.mapper.CellMapper;
 import cube.lectrium.repository.CellRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;

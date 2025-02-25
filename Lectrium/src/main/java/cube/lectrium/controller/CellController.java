@@ -1,6 +1,6 @@
 package cube.lectrium.controller;
 
-import cube.lectrium.model.dto.CellDTO;
+import cube.lectrium.dto.CellDTO;
 import cube.lectrium.service.CellService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

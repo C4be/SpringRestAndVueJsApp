@@ -1,8 +1,8 @@
-package cube.lectrium.model.mapper;
+package cube.lectrium.mapper;
 
 import cube.lectrium.model.Cell;
 import cube.lectrium.model.NoteBook;
-import cube.lectrium.model.dto.CellDTO;
+import cube.lectrium.dto.CellDTO;
 import org.springframework.stereotype.Component;
 import cube.lectrium.repository.NoteBookRepository;
 import org.springframework.beans.factory.annotation.Autowired;

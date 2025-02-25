@@ -1,4 +1,4 @@
-package cube.lectrium.model.dto;
+package cube.lectrium.dto;
 
 import jakarta.validation.constraints.*;
 import lombok.*;

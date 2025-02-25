@@ -1,6 +1,6 @@
 package cube.lectrium.controller;
 
-import cube.lectrium.model.dto.NoteBookDTO;
+import cube.lectrium.dto.NoteBookDTO;
 import cube.lectrium.service.NoteBookService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

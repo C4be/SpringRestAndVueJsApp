@@ -1,8 +1,8 @@
 package cube.lectrium.service;
 
 import cube.lectrium.model.Topic;
-import cube.lectrium.model.dto.TopicDTO;
-import cube.lectrium.model.mapper.TopicMapper;
+import cube.lectrium.dto.TopicDTO;
+import cube.lectrium.mapper.TopicMapper;
 import cube.lectrium.repository.TopicRepository;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;

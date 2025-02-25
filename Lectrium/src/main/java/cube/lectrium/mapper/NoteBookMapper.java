@@ -1,7 +1,7 @@
-package cube.lectrium.model.mapper;
+package cube.lectrium.mapper;
 
 import cube.lectrium.model.NoteBook;
-import cube.lectrium.model.dto.NoteBookDTO;
+import cube.lectrium.dto.NoteBookDTO;
 import org.springframework.stereotype.Component;
 
 import java.util.stream.Collectors;
