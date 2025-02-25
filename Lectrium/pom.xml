@@ -81,6 +81,15 @@
             <version>8.0.1.Final</version>
         </dependency>
 
+        <!--  Generate Endpoint Documentation      -->
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+            <version>2.8.5</version>
+        </dependency>
+
+
+
     </dependencies>
 
     <build>
