@@ -1,37 +1,36 @@
 package cube.lectrium.model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.*;
 import lombok.*;
 
 @Entity
 @Getter
 @Setter
-@Table(schema = "journal", name = "cell")
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(schema = "material", name = "cell")
 public class Cell {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true, nullable = false, length = 50)
-    @NotBlank(message = "Title не может быть пустым")
-    @Size(max = 50, message = "Title должен быть не длиннее 50 символов")
-    @Pattern(regexp = "^[a-zA-Zа-яА-Я0-9 .,!?]+$", message = "Title содержит недопустимые символы")
+    @Column(nullable = false, length = 100)
     private String title;
 
-    @Column(unique = true, nullable = false, length = 500)
-    @NotBlank(message = "Content не может быть пустым")
-    @Size(max = 500, message = "Content должен быть не длиннее 500 символов")
+    @Column(nullable = false, length = 2_000)
     private String content;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    @NotNull(message = "CellType не может быть null")
     private CellType cellType;
+
+    @Column(nullable = false)
+    private int numberInSequence;
+
+    @ManyToOne
+    @JoinColumn(name = "notebook_id", nullable = false)
+    private NoteBook notebook;
 
     public enum CellType {
         PYTHON_CELL,
@@ -39,5 +38,4 @@ public class Cell {
         MARKDOWN_CELL,
         ROW_TEXT_CELL
     }
-
 }

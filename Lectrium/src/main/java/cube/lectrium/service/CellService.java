@@ -1,56 +1,48 @@
 package cube.lectrium.service;
 
 import cube.lectrium.model.Cell;
+import cube.lectrium.model.dto.CellDTO;
+import cube.lectrium.model.mapper.CellMapper;
 import cube.lectrium.repository.CellRepository;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor
 public class CellService {
 
     private final CellRepository cellRepository;
+    private final CellMapper cellMapper;
 
-    public Cell getCellByTitle(String title) {
-        return cellRepository.getCellByTitle(title);
+    public CellDTO getCellByTitle(String title) {
+        return cellRepository.findByTitle(title)
+                .map(cellMapper::toDTO)
+                .orElseThrow(() -> new EntityNotFoundException("Cell not found"));
     }
 
     @Transactional
-    public Cell createCellByTitle(String title, String content, Cell.CellType type) {
-        Cell newCell = Cell.builder()
-                .title(title)
-                .content(content)
-                .cellType(type)
-                .build();
-
-        return cellRepository.save(newCell);
+    public CellDTO createCell(CellDTO cellDTO) {
+        Cell cell = cellMapper.toEntity(cellDTO);
+        return cellMapper.toDTO(cellRepository.save(cell));
     }
 
     @Transactional
-    public Cell updateCellByTitle(String title, String content, Cell.CellType type) {
-        Cell cell = getCellByTitle(title);
-        if (cell != null) {
-            cell.setContent(content);
-            cell.setCellType(type);
-            return cellRepository.save(cell);
-        }
-        return null;
-    }
+    public CellDTO updateCell(String title, CellDTO cellDTO) {
+        Cell cell = cellRepository.findByTitle(title)
+                .orElseThrow(() -> new EntityNotFoundException("Cell not found"));
 
-    public List<Cell> getAllCells() {
-        return cellRepository.findAll();
+        cell.setContent(cellDTO.getContent());
+        cell.setCellType(cellDTO.getCellType());
+        return cellMapper.toDTO(cellRepository.save(cell));
     }
 
     @Transactional
-    public boolean deleteCellByTitle(String title) {
-        Cell cell = getCellByTitle(title);
-        if (cell != null) {
-            cellRepository.delete(cell);
-            return true;
-        }
-        return false;
+    public boolean deleteCell(String title) {
+        Cell cell = cellRepository.findByTitle(title)
+                .orElseThrow(() -> new EntityNotFoundException("Cell not found"));
+        cellRepository.delete(cell);
+        return true;
     }
 }

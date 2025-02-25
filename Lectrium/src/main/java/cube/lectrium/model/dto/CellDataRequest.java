@@ -1,4 +1,4 @@
-package cube.lectrium.repository.dto;
+package cube.lectrium.model.dto;
 
 import cube.lectrium.model.Cell;
 import jakarta.validation.constraints.*;
